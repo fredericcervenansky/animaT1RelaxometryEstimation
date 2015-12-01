@@ -1,0 +1,152 @@
+{
+  "name": "animaT1RelaxometryEstimation",
+  "tool-version": "0.1",
+  "description": "relaxometry for T1 sequences",
+  "command-line": "animaT1RelaxometryEstimation",
+  "docker-image": "fcervenansky/relaxometry",
+  "docker-index": "http://index.docker.io",
+  "schema-version": "0.2",
+  "inputs": [
+    {
+      "id": "thread_number",
+      "name": "Number of Thread",
+      "type": "String",
+      "description": "number of threads to run on",
+      "command-line-key": "thread_number",
+      "list": false,
+      "optional": true,
+      "command-line-flag": "-T",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": null
+    },
+    {
+      "id": "background_signal",
+      "name": "background signal threshold",
+      "type": "Number",
+      "description": "background signal threshold",
+      "command-line-key": "bakcground",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-t",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": 10
+    },
+    {
+      "id": "upper_bond",
+      "name": "M0 value upper bound",
+      "type": "Number",
+      "description": "M0 value upper bound",
+      "command-line-key": "upper-bound-m0",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "--uper-bound-m0",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": 5000
+    },
+    {
+      "id": "T1_upper_bound",
+      "name": "T1 upper bound",
+      "type": "Number",
+      "description": "T1 value upper bound",
+      "command-line-key": "T1_upper_bound",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-u",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": 5000
+    },
+    {
+      "id": "flip",
+      "name": "flip",
+      "type": "File",
+      "description": "text file listing flip angles (in degrees)",
+      "command-line-key": "flip",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-f",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": null
+    },
+    {
+      "id": "repetion_time",
+      "name": "repetion time",
+      "type": "Number",
+      "description": "repetition time for T1 relaxometry",
+      "command-line-key": "repetition",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "--tr",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": 15
+    },
+    {
+      "id": "b1",
+      "name": "B1 map",
+      "type": "File",
+      "description": "B1 inhomogenity map",
+      "command-line-key": "b1_inhomogenity",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-b",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": null
+    },
+    {
+      "id": "mask",
+      "name": "mask",
+      "type": "File",
+      "description": "computation mask",
+      "command-line-key": "mask",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-m",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": null
+    },
+    {
+      "id": "relaxometry_images",
+      "name": "images",
+      "type": "File",
+      "description": "List of T1 relaxometry images",
+      "command-line-key": "images",
+      "list": true,
+      "optional": false,
+      "command-line-flag": "-l",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": null
+    }
+  ],
+  "output-files": [
+    {
+      "id": "m0_result",
+      "name": "M0 image",
+      "description": "Result M0 image",
+      "command-line-key": "Mo_image",
+      "path-template": "results/[mask]_m0_result",
+      "path-template-stripped-extensions": [],
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-0"
+    },
+    {
+      "id": "T1_result",
+      "name": "Result T1 image",
+      "description": "Result T1 image",
+      "command-line-key": "T1_image",
+      "path-template": "results/[mask]_T1_result",
+      "path-template-stripped-extensions": [],
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-o"
+    }
+  ]
+}
