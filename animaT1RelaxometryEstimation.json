@@ -1,11 +1,11 @@
 {
   "name": "animaT1RelaxometryEstimation",
-  "tool-version": "0.1",
+  "tool-version": "1.1",
   "description": "relaxometry for T1 sequences",
-  "command-line": "animaT1RelaxometryEstimation",
+  "command-line": "animaT1RelaxometryEstimation [THREAD_NUMBER] [BACKGROUND] [UPPER_BOUND_M0] [UPPER_BOUND_T1] [FLIP] [REPETITION] [B1_INHOMOGENITY] [MASK] [IMAGES] [M0_IMAGE] [T1_IMAGE]",
   "docker-image": "fcervenansky/relaxometry",
   "docker-index": "http://index.docker.io",
-  "schema-version": "0.2",
+  "schema-version": "0.3",
   "inputs": [
     {
       "id": "thread_number",
@@ -130,7 +130,7 @@
       "id": "m0_result",
       "name": "M0 image",
       "description": "Result M0 image",
-      "command-line-key": "Mo_image",
+      "command-line-key": "[MO_IMAGE]",
       "path-template": "results/[MASK]/[B1_INHOMOGENITY]_m0_result",
       "path-template-stripped-extensions": [],
       "list": false,
@@ -141,7 +141,7 @@
       "id": "T1_result",
       "name": "Result T1 image",
       "description": "Result T1 image",
-      "command-line-key": "T1_image",
+      "command-line-key": "[T1_IMAGE]",
       "path-template": "results/[MASK]/[B1_INHOMOGENITY]_T1_result",
       "path-template-stripped-extensions": [],
       "list": false,
