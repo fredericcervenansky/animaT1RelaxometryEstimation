@@ -1,0 +1,139 @@
+{
+  "name": "animaT2RelaxometryEstimation",
+  "tool-version": "1.1",
+  "description": "relaxometry for T2 sequences",
+  "command-line": "animaT2RelaxometryEstimation [THREAD_NUMBER] [BACKGROUND] [UPPER_BOUND_M0] [UPPER_BOUND_T2] [SPACING] [REPETITION] [MASK] [IMAGES] [M0_IMAGE] [T2_IMAGE]",
+  "docker-image": "fcervenansky/fullrelaxometry:1.1",
+  "docker-index": "http://index.docker.io",
+  "schema-version": "0.3",
+  "inputs": [
+    {
+      "id": "thread_number",
+      "name": "Number of Thread",
+      "type": "String",
+      "description": "number of threads to run on",
+      "command-line-key": "[THREAD_NUMBER]",
+      "list": false,
+      "optional": true,
+      "command-line-flag": "-T",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": null
+    },
+    {
+      "id": "background_signal",
+      "name": "background signal threshold",
+      "type": "String",
+      "description": "background signal threshold",
+      "command-line-key": "[BACKGROUND]",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-t",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": 10
+    },
+    {
+      "id": "spacing_between_echoes",
+      "name": "spacing between echoes",
+      "type": "String",
+      "description": "spacing between echoes",
+      "command-line-key": "[SPACING]",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-e",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": 10
+    },
+    {
+      "id": "upper_bond",
+      "name": "M0 value upper bound",
+      "type": "Number",
+      "description": "M0 value upper bound",
+      "command-line-key": "[UPPER_BOUND_M0]",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "--upper-bound-m0",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": 5000
+    },
+    {
+      "id": "T2_upper_bound",
+      "name": "T2 upper bound",
+      "type": "Number",
+      "description": "T2 value upper bound",
+      "command-line-key": "[UPPER_BOUND_T2]",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-u",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": 1000
+    },
+    {
+      "id": "repetion_time",
+      "name": "repetion time",
+      "type": "Number",
+      "description": "repetition time for T2 relaxometry",
+      "command-line-key": "[REPETITION]",
+      "list": false,
+      "optional": false,
+      "command-line-flag": "--tr",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": 5000
+    },
+    {
+      "id": "mask",
+      "name": "mask",
+      "type": "File",
+      "description": "computation mask",
+      "command-line-key": "[MASK]",
+      "list": false,
+      "optional": true,
+      "command-line-flag": "-m",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": null
+    },
+    {
+      "id": "relaxometry_images",
+      "name": "images",
+      "type": "File",
+      "description": "List of T2 relaxometry images",
+      "command-line-key": "[IMAGES]",
+      "list": true,
+      "optional": false,
+      "command-line-flag": "-l",
+      "required-inputs": [],
+      "disabled-by-inputs": [],
+      "default-value": null
+    }
+  ],
+  "output-files": [
+    {
+      "id": "m0_result",
+      "name": "M0 image",
+      "description": "Result M0 image",
+      "command-line-key": "[M0_IMAGE]",
+      "path-template": "results/[BACKGROUND]/[UPPER_BOUND_T2]_m0_result.nii.gz",
+      "path-template-stripped-extensions": [],
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-O"
+    },
+    {
+      "id": "T2_result",
+      "name": "Result T2 images",
+      "description": "Result of T2 relaxometry images",
+      "command-line-key": "[T2_IMAGE]",
+      "path-template": "results/[BACKGROUND]/[UPPER_BOUND_T2]_T2_result.nii.gz",
+      "path-template-stripped-extensions": [],
+      "list": false,
+      "optional": false,
+      "command-line-flag": "-o"
+    }
+  ]
+}
